@@ -11,3 +11,6 @@ const reportWebVitals = onPerfEntry => {
 };
 
 export default reportWebVitals;
+
+// Call the function to log web vitals to the console
+reportWebVitals(console.log);
