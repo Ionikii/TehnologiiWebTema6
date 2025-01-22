@@ -17,4 +17,5 @@ export class Activity {
 
     @Column({type:"integer"})
     public time:number;
+    reviews: any;
 }

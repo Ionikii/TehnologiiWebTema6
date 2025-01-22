@@ -7,21 +7,38 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ReviewService {
+  activityRepository: any;
+  personRepository: any;
   constructor(
     @InjectRepository(Review)
     private reviewRepository: Repository<Review>,
   ) {}
 
   async create(createReviewDto: CreateReviewDto): Promise<Review> {
-    const review = this.reviewRepository.create(createReviewDto);
-    return this.reviewRepository.save(review);//trimitere feedback
+    const activity = await this.activityRepository.findOne(createReviewDto.activityId);
+    const student = await this.personRepository.findOne(createReviewDto.studentId);
+
+    if (!activity || !student) {
+      throw new Error('Activity or student not found');
+    }
+
+    const review = this.reviewRepository.create({
+      activity, 
+      student, 
+      feedback: createReviewDto.feedback, 
+      timestamp: createReviewDto.timestamp, 
+    });
+
+    return this.reviewRepository.save(review); 
   }
-  
-  async getReviews(activityId: string): Promise<Review[]> {
-    return this.reviewRepository.find({ where: { activityId } });
+
+  // Metoda corectă
+  async getReviews(activityId: number): Promise<Review[]> {
+    return this.reviewRepository.find({ where: { activity: { id: activityId } } });
   }
+
   findAll() {
-    return `This action returns all review`;
+    return `This action returns all reviews`;
   }
 
   findOne(id: number) {

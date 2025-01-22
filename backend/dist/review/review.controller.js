@@ -21,40 +21,44 @@ let ReviewController = class ReviewController {
     constructor(reviewService) {
         this.reviewService = reviewService;
     }
-    async create(createReviewDto) {
-        return this.reviewService.create(createReviewDto);
-    }
     async getReviews(activityId) {
-        return this.reviewService.getReviews(activityId);
+        const activityIdNumber = parseInt(activityId, 10);
+        if (isNaN(activityIdNumber)) {
+            throw new Error('Invalid activity ID');
+        }
+        return this.reviewService.getReviews(activityIdNumber);
+    }
+    create(createReviewDto) {
+        return this.reviewService.create(createReviewDto);
     }
     findAll() {
         return this.reviewService.findAll();
     }
     findOne(id) {
-        return this.reviewService.findOne(+id);
+        return this.reviewService.findOne(id);
     }
     update(id, updateReviewDto) {
-        return this.reviewService.update(+id, updateReviewDto);
+        return this.reviewService.update(id, updateReviewDto);
     }
     remove(id) {
-        return this.reviewService.remove(+id);
+        return this.reviewService.remove(id);
     }
 };
 exports.ReviewController = ReviewController;
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
-    __metadata("design:returntype", Promise)
-], ReviewController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)(':activityId/reviews'),
+    (0, common_1.Get)('activity/:activityId'),
     __param(0, (0, common_1.Param)('activityId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "getReviews", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
+    __metadata("design:returntype", void 0)
+], ReviewController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -65,26 +69,26 @@ __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ReviewController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
+    (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_review_dto_1.UpdateReviewDto]),
+    __metadata("design:paramtypes", [Number, update_review_dto_1.UpdateReviewDto]),
     __metadata("design:returntype", void 0)
 ], ReviewController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ReviewController.prototype, "remove", null);
 exports.ReviewController = ReviewController = __decorate([
-    (0, common_1.Controller)('review'),
+    (0, common_1.Controller)('reviews'),
     __metadata("design:paramtypes", [review_service_1.ReviewService])
 ], ReviewController);
 //# sourceMappingURL=review.controller.js.map

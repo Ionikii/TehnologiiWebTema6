@@ -4,4 +4,5 @@ export declare class Activity {
     teacherID: number;
     password: string;
     time: number;
+    reviews: any;
 }

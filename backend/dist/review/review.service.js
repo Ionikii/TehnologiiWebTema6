@@ -22,14 +22,24 @@ let ReviewService = class ReviewService {
         this.reviewRepository = reviewRepository;
     }
     async create(createReviewDto) {
-        const review = this.reviewRepository.create(createReviewDto);
+        const activity = await this.activityRepository.findOne(createReviewDto.activityId);
+        const student = await this.personRepository.findOne(createReviewDto.studentId);
+        if (!activity || !student) {
+            throw new Error('Activity or student not found');
+        }
+        const review = this.reviewRepository.create({
+            activity,
+            student,
+            feedback: createReviewDto.feedback,
+            timestamp: createReviewDto.timestamp,
+        });
         return this.reviewRepository.save(review);
     }
     async getReviews(activityId) {
-        return this.reviewRepository.find({ where: { activityId } });
+        return this.reviewRepository.find({ where: { activity: { id: activityId } } });
     }
     findAll() {
-        return `This action returns all review`;
+        return `This action returns all reviews`;
     }
     findOne(id) {
         return `This action returns a #${id} review`;

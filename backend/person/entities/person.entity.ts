@@ -19,4 +19,5 @@ export class Person {
 
   @Column({type: "text",nullable: false})
   public password:string;
+    reviews: any;
 }

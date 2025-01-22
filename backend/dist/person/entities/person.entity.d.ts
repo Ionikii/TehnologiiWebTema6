@@ -5,4 +5,5 @@ export declare class Person {
     email: string;
     isTeacher: boolean;
     password: string;
+    reviews: any;
 }

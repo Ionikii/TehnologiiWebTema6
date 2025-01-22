@@ -4,9 +4,11 @@ import { Review } from './entities/review.entity';
 import { Repository } from 'typeorm';
 export declare class ReviewService {
     private reviewRepository;
+    activityRepository: any;
+    personRepository: any;
     constructor(reviewRepository: Repository<Review>);
     create(createReviewDto: CreateReviewDto): Promise<Review>;
-    getReviews(activityId: string): Promise<Review[]>;
+    getReviews(activityId: number): Promise<Review[]>;
     findAll(): string;
     findOne(id: number): string;
     update(id: number, updateReviewDto: UpdateReviewDto): string;
