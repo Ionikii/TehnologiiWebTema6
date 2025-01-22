@@ -4,13 +4,21 @@ import { UpdateActivityDto } from './dto/update-activity.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Activity } from './entities/activity.entity';
 import { Repository } from 'typeorm';
+import { Review } from 'review/entities/review.entity';
 
 @Injectable()
 export class ActivityService {
   constructor(
     @InjectRepository(Activity)
-    private readonly activityRepository : Repository<Activity>
-  ){}
+    private activityRepository: Repository<Activity>,
+    @InjectRepository(Review)
+    private reviewRepository: Repository<Review>,
+  ) {}
+
+  async getReviews(activityId: string): Promise<Review[]> {
+    return this.reviewRepository.find({ where: { activityId } });
+  }
+ 
   create(createActivityDto: CreateActivityDto) {
     const activity = this.activityRepository.create({
       description: createActivityDto.description,
