@@ -6,7 +6,7 @@ export declare class ActivityController {
     constructor(activityService: ActivityService);
     create(createActivityDto: CreateActivityDto): Promise<import("./entities/activity.entity").Activity>;
     findAll(): Promise<import("./entities/activity.entity").Activity[]>;
-    findOne(id: string): Promise<import("./entities/activity.entity").Activity | null>;
+    findOne(id: string): Promise<import("./entities/activity.entity").Activity | undefined>;
     update(id: string, updateActivityDto: UpdateActivityDto): Promise<import("typeorm").UpdateResult>;
     remove(id: string): Promise<import("typeorm").DeleteResult>;
 }

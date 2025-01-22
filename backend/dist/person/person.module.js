@@ -18,8 +18,9 @@ exports.PersonModule = PersonModule;
 exports.PersonModule = PersonModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([person_entity_1.Person])],
-        controllers: [person_controller_1.PersonController],
         providers: [person_service_1.PersonService],
+        exports: [person_service_1.PersonService],
+        controllers: [person_controller_1.PersonController],
     })
 ], PersonModule);
 //# sourceMappingURL=person.module.js.map

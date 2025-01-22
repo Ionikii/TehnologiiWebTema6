@@ -7,6 +7,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class PersonService {
+  async findByEmail(email: string): Promise<Person | undefined> {
+    return this.personRepository.findOneBy({ email });  // Căutăm utilizatorul după email
+  }
   constructor(
     @InjectRepository(Person)
     private readonly personRepository: Repository<Person>

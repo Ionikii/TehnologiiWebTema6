@@ -18,5 +18,5 @@ export class Person {
   public isTeacher: boolean;
 
   @Column({type: "text",nullable: false})
-  private password:string;
+  public password:string;
 }

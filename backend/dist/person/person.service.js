@@ -18,6 +18,9 @@ const typeorm_1 = require("@nestjs/typeorm");
 const person_entity_1 = require("./entities/person.entity");
 const typeorm_2 = require("typeorm");
 let PersonService = class PersonService {
+    async findByEmail(email) {
+        return this.personRepository.findOneBy({ email });
+    }
     constructor(personRepository) {
         this.personRepository = personRepository;
     }

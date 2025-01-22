@@ -6,6 +6,7 @@ import { PersonModule } from './person/person.module';
 import { Person } from './person/entities/person.entity';
 import { ActivityModule } from './activity/activity.module';
 import { ReviewModule } from './review/review.module';
+import { AuthModule } from 'auth/auth.module';
 
 
 
@@ -24,6 +25,7 @@ import { ReviewModule } from './review/review.module';
     }),
     PersonModule,
     ActivityModule,
+    AuthModule,
     ReviewModule,
   ],
   controllers: [AppController],
