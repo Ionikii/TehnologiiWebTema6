@@ -1,6 +1,4 @@
-gitignore
-Copy
-Edit
+
 # Ignore node_modules directory
 node_modules/
 
