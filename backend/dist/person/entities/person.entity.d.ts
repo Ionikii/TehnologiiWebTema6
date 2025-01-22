@@ -4,4 +4,5 @@ export declare class Person {
     lastName: string;
     email: string;
     isTeacher: boolean;
+    private password;
 }

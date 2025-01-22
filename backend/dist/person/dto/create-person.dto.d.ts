@@ -3,4 +3,5 @@ export declare class CreatePersonDto {
     lastName: string;
     email: string;
     isTeacher: boolean;
+    password: string;
 }

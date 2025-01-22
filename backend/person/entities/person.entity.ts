@@ -17,4 +17,6 @@ export class Person {
   @Column({ type: "boolean", nullable: false })
   public isTeacher: boolean;
 
+  @Column({type: "text",nullable: false})
+  private password:string;
 }

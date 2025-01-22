@@ -34,6 +34,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: "boolean", nullable: false }),
     __metadata("design:type", Boolean)
 ], Person.prototype, "isTeacher", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: false }),
+    __metadata("design:type", String)
+], Person.prototype, "password", void 0);
 exports.Person = Person = __decorate([
     (0, typeorm_1.Entity)()
 ], Person);

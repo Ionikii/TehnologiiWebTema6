@@ -10,11 +10,14 @@ exports.ReviewModule = void 0;
 const common_1 = require("@nestjs/common");
 const review_service_1 = require("./review.service");
 const review_controller_1 = require("./review.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const review_entity_1 = require("./entities/review.entity");
 let ReviewModule = class ReviewModule {
 };
 exports.ReviewModule = ReviewModule;
 exports.ReviewModule = ReviewModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([review_entity_1.Review])],
         controllers: [review_controller_1.ReviewController],
         providers: [review_service_1.ReviewService],
     })
