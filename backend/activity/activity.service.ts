@@ -11,13 +11,9 @@ export class ActivityService {
   constructor(
     @InjectRepository(Activity)
     private activityRepository: Repository<Activity>,
-    @InjectRepository(Review)
-    private reviewRepository: Repository<Review>,
   ) {}
 
-  async getReviews(activityId: string): Promise<Review[]> {
-    return this.reviewRepository.find({ where: { activityId } });
-  }
+
  
   create(createActivityDto: CreateActivityDto) {
     const activity = this.activityRepository.create({

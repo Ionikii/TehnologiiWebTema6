@@ -12,11 +12,6 @@ export class ActivityController {
     return this.activityService.create(createActivityDto);
   } //endpoint pt adaugare activitate de catre prof
 
-  @Get(':activityId/reviews')
-  async getReviews(@Param('activityId') activityId: string) {
-    return this.activityService.getReviews(activityId);}
-    //accesare reviews de care profesor
-
   @Get()
   findAll() {
     return this.activityService.findAll();

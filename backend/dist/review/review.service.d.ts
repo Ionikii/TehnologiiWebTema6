@@ -1,7 +1,12 @@
 import { CreateReviewDto } from './dto/create-review.dto';
 import { UpdateReviewDto } from './dto/update-review.dto';
+import { Review } from './entities/review.entity';
+import { Repository } from 'typeorm';
 export declare class ReviewService {
-    create(createReviewDto: CreateReviewDto): string;
+    private reviewRepository;
+    constructor(reviewRepository: Repository<Review>);
+    create(createReviewDto: CreateReviewDto): Promise<Review>;
+    getReviews(activityId: string): Promise<Review[]>;
     findAll(): string;
     findOne(id: number): string;
     update(id: number, updateReviewDto: UpdateReviewDto): string;

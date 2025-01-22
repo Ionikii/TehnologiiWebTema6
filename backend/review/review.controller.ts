@@ -8,9 +8,15 @@ export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
 
   @Post()
-  create(@Body() createReviewDto: CreateReviewDto) {
+  async create(@Body() createReviewDto: CreateReviewDto) {
     return this.reviewService.create(createReviewDto);
-  }
+  } //creare review
+  
+  @Get(':activityId/reviews')
+  async getReviews(@Param('activityId') activityId: string) {
+    return this.reviewService.getReviews(activityId);}
+    //accesare reviews de care profesor
+
 
   @Get()
   findAll() {

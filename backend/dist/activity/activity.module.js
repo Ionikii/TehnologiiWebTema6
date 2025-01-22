@@ -12,12 +12,13 @@ const activity_service_1 = require("./activity.service");
 const activity_controller_1 = require("./activity.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const activity_entity_1 = require("./entities/activity.entity");
+const review_module_1 = require("../review/review.module");
 let ActivityModule = class ActivityModule {
 };
 exports.ActivityModule = ActivityModule;
 exports.ActivityModule = ActivityModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([activity_entity_1.Activity])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([activity_entity_1.Activity]), review_module_1.ReviewModule],
         controllers: [activity_controller_1.ActivityController],
         providers: [activity_service_1.ActivityService],
     })
